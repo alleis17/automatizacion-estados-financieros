@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+salidas/
+.venv/
+venv/
+env/
+.Rhistory
