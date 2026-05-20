@@ -171,13 +171,14 @@ def formatear_columnas_monetarias(df: pd.DataFrame) -> pd.DataFrame:
     tabla = df.copy()
     columnas_valor = [col for col in df.columns if col in MESES or col == "total_2026"]
     for columna in columnas_valor:
-        tabla[columna] = tabla[columna].apply(formato_moneda)
+        tabla[columna] = tabla[columna].apply(formato_moneda).astype("string")
     return tabla
 
 
 def formatear_tabla_por_fila(df: pd.DataFrame, columna_nombre: str) -> pd.DataFrame:
     tabla = df.copy()
     columnas_mes = [col for col in tabla.columns if col in MESES]
+    tabla[columnas_mes] = tabla[columnas_mes].astype("object")
 
     for indice, fila in tabla.iterrows():
         nombre = fila[columna_nombre]
